@@ -1,6 +1,5 @@
 import telebot
 from telebot import types, util
-from fractions import Fraction
 import time
 from datetime import datetime
 
@@ -8,18 +7,10 @@ API_TOKEN = '1039703621:AAGNQ-r3cQxd2hEdbj8KHnBgT-ruyUUhq84'
 
 bot = telebot.TeleBot(API_TOKEN)
 tb = telebot.AsyncTeleBot(API_TOKEN)
-# Viki = 1000947005
-# Kate = 1090010019
 Alex = 301146859
-# Ekaterina = 800104629
-# Konstantin = 126776816
 chat_id = Alex
 
-#bot.send_message(Alex, "Привет)))))))")
-#bot.send_message(Ekaterina, "Теперь я могу тебе писать, Ekaterina!")
-
-
-# bot.send_message(Konstantin, "Доброе утро, лох!")
+# bot.send_message(Konstantin, "Доброе утро!")
 
 # @bot.message_handler(content_types=['text'])
 # def lalala(message):
@@ -29,8 +20,6 @@ chat_id = Alex
     # time.sleep(5)
     # bot.send_message(chat_id, 'Hi bro AGAIN')
     # bot.send_message(chat_id, datetime.now().strftime("%H:%M"))
-
-
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
