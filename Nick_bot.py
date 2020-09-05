@@ -24,18 +24,19 @@ chat_id = Alex
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}!')
-    bot.send_message(message.chat.id, 'Пока ты можешь только складывать простые дроби и находить проценты')
-    bot.send_message(message.chat.id, 'Узнать правила: /help \nНачать пользоваться: /count')
-    #bot.send_message(Alex, message.text)
+    bot.send_message(message.chat.id, f'Меня назначили твоим менеджером!\n'
+                                      f'\nВсе просто – ты хочешь, что-то сделать.'
+                                      f'\nПишешь мне об этом, и указываешь срок, когда я должен проконтролировать выполнение.'
+                                      f'\nКак время придет – я с тебя все спрошу.'
+                                      f'\nТолько без хитростей!')
+    bot.send_message(message.chat.id, 'Здесь описаны наши с тобой правила: /help')
+    bot.send_message(message.chat.id, 'Как ознакомишься, дай знать. И мы начнем делать дела!')
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
-    bot.send_message(message.chat.id, f'{message.from_user.first_name}, так и знал, что нажмешь ХЕЛП.'
-                                      f'\nКороче:'
-                                      f'\nСначала ставим палочку: /'
-                                      f'\nВыбираем /count и пишем по порядку по ОДНОМУ числу'
-                                      f'\nДроби указываем в формате: 5/6'
-                                      f'\nПроценты: сначала что, потом от чего!')
+    bot.send_message(message.chat.id, f'{message.from_user.first_name}, смотри.'
+                                      f'\nЧтобы завести поручение используй: /set'
+                                      f'\nЧтобы узнать, какие поручения на тебе: /list')
 
 # Handle '/start' and '/help'
 @bot.message_handler(commands=['activate'])
