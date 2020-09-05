@@ -10,16 +10,6 @@ tb = telebot.AsyncTeleBot(API_TOKEN)
 Alex = 301146859
 chat_id = Alex
 
-# bot.send_message(Konstantin, "Доброе утро!")
-
-# @bot.message_handler(content_types=['text'])
-# def lalala(message):
-    # bot.send_message(Alex, f"{message.text}\n\nFrom: {message.from_user.first_name} \nId: {message.from_user.id}")
-    # bot.send_message(chat_id, 'Hi bro!')
-    # bot.send_message(chat_id, time)
-    # time.sleep(5)
-    # bot.send_message(chat_id, 'Hi bro AGAIN')
-    # bot.send_message(chat_id, datetime.now().strftime("%H:%M"))
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -33,40 +23,28 @@ def send_welcome(message):
     bot.send_message(message.chat.id, 'Как ознакомишься, дай знать. И мы начнем делать дела!')
 
 @bot.message_handler(commands=['help'])
-def send_welcome(message):
+def send_help(message):
     bot.send_message(message.chat.id, f'{message.from_user.first_name}, смотри.'
                                       f'\nЧтобы завести поручение используй: /set'
                                       f'\nЧтобы узнать, какие поручения на тебе: /list')
 
-# Handle '/start' and '/help'
-@bot.message_handler(commands=['activate'])
-def send_welcome(message):
-    msg = bot.send_message(message.chat.id, "Nikita, have you washed your face?")
-    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
-    markup.add('Yes', 'No', 'In 5 minutes')
-    bot.register_next_step_handler(msg, process_sex_step)
+#Set a new Task
+@bot.message_handler(commands=['set'])
+def send_set(message):
+    msg = bot.send_message(message.chat.id, 'Что ты хочешь сделать?')
+    bot.register_next_step_handler(msg, put_task_on_schedule)
 
 
-def process_sex_step(message):
+def put_task_on_schedule(message):
     try:
         chat_id = message.chat.id
         answer = message.text
-        if (answer == u'Yes'):
-            x = 'Very good!!!'
-            bot.send_message(chat_id, x)
-        elif (answer == u'No'):
-            x = 'WHY ???'
-            bot.send_message(chat_id, x)
-        elif (answer == u'In 5 minutes'):
-            x = 'Ok, I am waiting ...'
-            bot.send_message(chat_id, x)
-            time.sleep(3)
-            bot.send_message(chat_id, 'What about now?')
-            #Here we need next_step_handler to ask again (or loop)
-        else:
-            bot.send_message(chat_id, 'Are you durak?!')
+
+        #TO-DO:
+        #Message handler
+
     except Exception as e:
-        bot.reply_to(message, 'oooops')
+        bot.reply_to(message, 'Случилась какая-то ошибка >_<')
 
 
 @util.async_dec()
@@ -89,3 +67,7 @@ def send_message(message):
 bot.polling()
 
 
+#Useful code
+    #markup = types.ReplyKeyboardMarkup(one_time_keyboard=True)
+    #markup.add('Да', 'Нет', 'Через 10 минут)
+    #msg = bot.send_message(message.chat.id, "Что ты хочешь сделать?", reply_markup=markup)
