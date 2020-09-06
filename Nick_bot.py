@@ -6,7 +6,6 @@ from datetime import datetime
 API_TOKEN = '1039703621:AAGNQ-r3cQxd2hEdbj8KHnBgT-ruyUUhq84'
 
 bot = telebot.TeleBot(API_TOKEN)
-tb = telebot.AsyncTeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
