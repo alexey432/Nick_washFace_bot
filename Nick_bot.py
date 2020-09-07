@@ -10,12 +10,19 @@ bot = telebot.TeleBot(API_TOKEN)
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}!')
-    bot.send_message(message.chat.id, 'Я - будильник... А ты лох ))))))) ')
-    bot.send_message(message.chat.id, 'Узнать правила: /help \nУстановить напоминание: /settime')
+    bot.send_message(message.chat.id, f'Меня назначили твоим менеджером!\n'
+                                      f'\nВсе просто – ты хочешь, что-то сделать.'
+                                      f'\nПишешь мне об этом, и указываешь срок, когда я должен проконтролировать выполнение.'
+                                      f'\nКак время придет – я с тебя все спрошу.'
+                                      f'\nТолько без хитростей!')
+    bot.send_message(message.chat.id, 'Здесь описаны наши с тобой правила: /help')
+    bot.send_message(message.chat.id, 'Как ознакомишься, дай знать. И мы начнем делать дела!')
 
 @bot.message_handler(commands=['help'])
-def send_welcome(message):
-    bot.send_message(message.chat.id, f'{message.from_user.first_name}, так и знал, что нажмешь ХЕЛП. \nПока нет ничё, бро')
+def send_help(message):
+    bot.send_message(message.chat.id, f'{message.from_user.first_name}, смотри.'
+                                      f'\nЧтобы завести поручение используй: /set'
+                                      f'\nЧтобы узнать, какие поручения на тебе: /list')
 
 # It is useless right now... But I will think it over and try to come up with something )))
 @bot.message_handler(commands=['activate'])
