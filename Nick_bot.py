@@ -11,7 +11,7 @@ bot = telebot.TeleBot(API_TOKEN)
 def send_welcome(message):
     bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}!')
     bot.send_message(message.chat.id, f'Меня назначили твоим менеджером!\n'
-                                      f'\nВсе просто – ты хочешь, что-то сделать.'
+                                      f'\nВсе просто – ты хочешь что-то сделать.'
                                       f'\nПишешь мне об этом, и указываешь срок, когда я должен проконтролировать выполнение.'
                                       f'\nКак время придет – я с тебя все спрошу.'
                                       f'\nТолько без хитростей!')
