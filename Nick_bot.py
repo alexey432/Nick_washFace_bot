@@ -2,8 +2,11 @@ import telebot
 from telebot import types
 import time
 from datetime import datetime
+import json
 
-API_TOKEN = '1039703621:AAGNQ-r3cQxd2hEdbj8KHnBgT-ruyUUhq84'
+
+with open('Nick_washFace_bot/keys/keys.json', 'r') as api_token_f:
+    API_TOKEN = json.load(api_token_f)['api_token']
 
 bot = telebot.TeleBot(API_TOKEN)
 
