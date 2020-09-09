@@ -4,10 +4,15 @@ import time
 from datetime import datetime
 import json
 
-
+#Parsing JSON with parameters
+#API_TOKEN
 with open('Nick_washFace_bot/keys/keys.json', 'r') as api_token_f:
     API_TOKEN = json.load(api_token_f)['api_token']
 
+#SQL CONNECTION
+# add your code here
+
+#Connect to the bot via API_TOKEN
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
